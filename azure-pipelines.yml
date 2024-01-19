@@ -15,10 +15,8 @@ jobs:
   continueOnError: true # next job starts even if this one fails
   steps:
   - script: sudo apt-get update
-  - script: echo "Arrancando servicio apache y verificando que este arriba"
   - script: sudo systemctl start apache2.service
   - script: echo `ps -ef | grep -i httpd`
-  - script: echo "Se va a ejecutar el comando ls $(htmlpath)"
   - script: echo `ls $(htmlpath)`
 #  - script: exit 0
 
@@ -27,16 +25,14 @@ jobs:
   displayName: Code copied to $(htmlpath)
   continueOnError: false # next job don´t starts if this one fails
   steps:
-  - script: echo "Se va a ejecutar el comando ls $(Build.SourcesDirectory)"; ls $(Build.SourcesDirectory)
-  - script: echo "cp -r $(Build.SourcesDirectory)/. $(htmlpath)/; sudo cp -r $(Build.SourcesDirectory)/. $(htmlpath)/
+  - script: ls $(Build.SourcesDirectory)
+  - script: sudo cp -r $(Build.SourcesDirectory)/. $(htmlpath)/
 
 - job: C
   dependsOn: B
   displayName: Checking html code running on Apache
   steps:
-  - script: Se va a ejecutar el comando
   - script: echo `ls $(htmlpath)/s`
-  - script: echo Curl a $(testURL)
   - script: curl $(testURL) 
 
 
