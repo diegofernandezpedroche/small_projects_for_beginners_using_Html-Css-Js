@@ -20,7 +20,7 @@ steps:
   displayName: 'Apache installed and ready to receive the HTML code's
 
 #- script: |
-#    echo "Se va a ejecutar el comando: ls $(Build.SourcesDirectory)"
+    echo "Se va a ejecutar el comando: ls $(Build.SourcesDirectory)"
 #    ls $(Build.SourcesDirectory)
 #    echo "cp -r $(Build.SourcesDirectory)/ $(htmlpath)/"
 #    sudo cp -r $(Build.SourcesDirectory) $(htmlpath)/
