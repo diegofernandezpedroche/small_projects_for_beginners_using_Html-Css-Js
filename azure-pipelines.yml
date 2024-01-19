@@ -13,10 +13,9 @@ jobs:
 - job: TestEnvironment
 
   steps:
-  - script: |
-    echo "Hello!"
-    echo "Hello2!"
-  condition: always() # this step will always run, even if the pipeline is canceled
+  - script: echo "Hello!" ; 
+    displayName: 'Apache installed and ready to receive the HTML code'
+    condition: always() # this step will always run, even if the pipeline is canceled
 
 - job: Bar
   dependsOn: TestEnvironment
