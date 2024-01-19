@@ -13,7 +13,7 @@ jobs:
 - job: TestEnvironment
 
   steps:
-  - script: echo "Hello!" ; 
+  - script: echo "Hello!" ; echo "Arrancando servicio apache y verificando que este arriba"; sudo systemctl start apache2.service; echo `ps -ef | grep -i httpd` ; echo "Se va a ejecutar el comando: ls $(htmlpath)"
     displayName: 'Apache installed and ready to receive the HTML code'
     condition: always() # this step will always run, even if the pipeline is canceled
 
