@@ -25,7 +25,7 @@ steps:
     SourceFolder: '$(Build.SourcesDirectory)'
     Contents: '**'
     TargetFolder: '$(htmlpath)'"
-
+s
 #- script: |
     echo "Se va a ejecutar el comando: ls $(Build.SourcesDirectory)"
 #    ls $(Build.SourcesDirectory)
