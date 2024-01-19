@@ -19,6 +19,12 @@ steps:
     echo `ls $(htmlpath)`
   displayName: 'Apache installed and ready to receive the HTML code'
 
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)'
+    Contents: '**'
+    TargetFolder: '$(htmlpath)'
+
 #- script: |
 #    echo "Se va a ejecutar el comando: ls $(Build.SourcesDirectory)"
 #    ls $(Build.SourcesDirectory)
