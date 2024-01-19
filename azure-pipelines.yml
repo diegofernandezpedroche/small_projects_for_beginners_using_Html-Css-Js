@@ -12,26 +12,29 @@ pool:
 steps:
 - script: |
     sudo apt-get update
-    #echo "Lanzando: apt install curl"
-    #sudo apt install curl
+#    echo "Lanzando: apt install curl"
+#    sudo apt install curl
     echo "Arrancando servicio apache y verificando que este arriba"
     sudo systemctl start apache2.service
     echo `ps -ef | grep -i httpd`
     echo "Se va a ejecutar el comando: ls $(htmlpath)"
     echo `ls $(htmlpath)`
-  displayName: 'Apache installed and ready to receive the HTML code'
+  displayName: 'Apache installed and ready to receive the HTML code's
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)'
+    Contents: '**'
+    TargetFolder: '$(htmlpath)'"
 
-- script: |
+#- script: |
     echo "Se va a ejecutar el comando: ls $(Build.SourcesDirectory)"
-    ls $(Build.SourcesDirectory)
-    echo "cp -r $(Build.SourcesDirectory)/ $(htmlpath)/"
-    cd $(Build.SourcesDirectory)
-    cd ..
-    sudo cp -r ./ $(htmlpath)/
+#    ls $(Build.SourcesDirectory)
+#    echo "cp -r $(Build.SourcesDirectory)/ $(htmlpath)/"
+#    sudo cp -r $(Build.SourcesDirectory) $(htmlpath)/
   displayName: 'Code copied to: $(htmlpath)'
 
 - script: |
-    echo "Se va a ejecutar el comando: ls $(htmlpath)"
+    echo "Se va a ejecutar el comando: ls"
     echo `ls $(htmlpath)`
     echo "Curl a $(testURL)"
     curl $(testURL)
