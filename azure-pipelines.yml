@@ -14,10 +14,11 @@ steps:
     sudo apt-get update
     echo "Lanzando: apt install curl"
     sudo apt install curl
-    echo "Arrancando servicio apache:"
+    echo "Arrancando servicio apache y verificando que este arriba"
     sudo systemctl start apache2.service
+    echo `ps -ef | grep -i httpd`
     echo "Se va a ejecutar el comando: ls -lart /var/www"
-    echo `ls -lart /var/www`
+    echo `ls $(htmlpath)`
   displayName: 'Apache installed and ready to receive the HTML code'
 - script: |
     sudo cp -r '$(Build.SourcesDirectory)' '$(htmlpath)'
@@ -31,7 +32,7 @@ steps:
 
 - script: |
     echo "Se va a ejecutar el comando: ls -lart /var/www"
-    echo `ls -lart /var/www`
+    echo `ls $(htmlpath)`
     echo "Curl a http://localhost:80"
     curl http://localhost:80
   displayName: 'Checking code has been updated properly to Apache'
