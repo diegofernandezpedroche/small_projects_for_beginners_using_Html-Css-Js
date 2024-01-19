@@ -28,7 +28,7 @@ steps:
 
 - script: |
     echo "Se va a ejecutar el comando: ls"
-    echo `ls $(htmlpath)`
+    echo `ls $(htmlpath)/s`
     echo "Curl a $(testURL)"
     curl $(testURL)
   displayName: 'Checking html code running on Apache'
