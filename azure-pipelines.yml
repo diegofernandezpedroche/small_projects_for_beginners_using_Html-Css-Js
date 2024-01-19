@@ -38,3 +38,4 @@ steps:
     echo "Curl a http://localhost:80"
     curl http://localhost:80
   displayName: 'Checking code has been updated properly to Apache'
+
