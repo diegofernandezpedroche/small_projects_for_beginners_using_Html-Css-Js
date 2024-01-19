@@ -20,17 +20,11 @@ steps:
     echo "Se va a ejecutar el comando: ls -lart $(htmlpath)"
     echo `ls $(htmlpath)`
   displayName: 'Apache installed and ready to receive the HTML code'
+
 - script: |
     echo "Se va a ejecutar el comando: ls -lart $(Build.SourcesDirectory)"
     ls $(Build.SourcesDirectory)
     sudo cp -r '$(Build.SourcesDirectory)' '$(htmlpath)'
-#- task: CopyFiles@2
-#  inputs:
-#    sourceFolder: '$(Build.SourcesDirectory)'
-#    contents: |
-#       *
-#    targetFolder: '$(htmlpath)'
-#  displayName: 'Copy project files'
 
 - script: |
     echo "Se va a ejecutar el comando: ls -lart $(htmlpath)"
