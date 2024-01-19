@@ -12,11 +12,21 @@ pool:
 steps:
 - script: |
     sudo apt-get update
+    sudo apt install curl
     echo "Se va a ejecutar el comando: ls -lart /var/www"
     echo `ls -lart /var/www`
   displayName: 'Apache installed and ready to receive the HTML code'
+- task: CopyFiles@2
+  inputs:
+    sourceFolder: '$(Build.SourcesDirectory)'
+    contents: |
+       *
+    targetFolder: '$(htmlpath)'
+  displayName: 'Copy project files'
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    echo "Se va a ejecutar el comando: ls -lart /var/www"
+    echo `ls -lart /var/www`
+    echo "Curl a http://localhost:80"
+    curl http://localhost:80
+  displayName: 'Checking code has been updated properly to Apache'
