@@ -19,7 +19,7 @@ jobs:
     echo `ps -ef | grep -i httpd`
     echo "Se va a ejecutar el comando: ls $(htmlpath)"
     echo `ls $(htmlpath)`
-  displayName: 'Apache installed and ready to receive the HTML code'
+#  displayName: 'Apache installed and ready to receive the HTML code'
   condition: always() # this step will always run, even if the pipeline is canceled
 
 - job: CodeToHTML
