@@ -21,13 +21,12 @@ steps:
     echo `ls $(htmlpath)`
   displayName: 'Apache installed and ready to receive the HTML code's
 
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: $(Build.SourcesDirectory) # string. Source Folder. 
-    Contents: '**' # string. Required. Contents. Default: **.
-    TargetFolder: $(htmlpath) # string. Required. Target Folder. 
-
-
+#- script: |
+#    echo "Se va a ejecutar el comando: ls $(Build.SourcesDirectory)"
+#    ls $(Build.SourcesDirectory)
+#    echo "cp -r $(Build.SourcesDirectory)/ $(htmlpath)/"
+#    sudo cp -r $(Build.SourcesDirectory) $(htmlpath)/
+#  displayName: 'Code copied to: $(htmlpath)'
 
 - script: |
     echo "Se va a ejecutar el comando: ls"
