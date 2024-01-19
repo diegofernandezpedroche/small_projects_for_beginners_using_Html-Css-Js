@@ -12,8 +12,8 @@ pool:
 steps:
 - script: |
     sudo apt-get update
-    sudo apt-get install apache2
-  displayName: 'Apache installed...'
+    echo `ls -lart /var/www`
+  displayName: 'Apache installed and ready to receive the HTML code'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
