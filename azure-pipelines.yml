@@ -12,8 +12,8 @@ pool:
 steps:
 - script: |
     sudo apt-get update
-    echo "Lanzando: apt install curl"
-    sudo apt install curl
+    #echo "Lanzando: apt install curl"
+    #sudo apt install curl
     echo "Arrancando servicio apache y verificando que este arriba"
     sudo systemctl start apache2.service
     echo `ps -ef | grep -i httpd`
