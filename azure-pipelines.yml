@@ -11,7 +11,7 @@ pool:
 
 jobs:
 - job: A
-  displayName: Job A
+  displayName: Apache installed and ready to receive the HTML code
   continueOnError: true # next job starts even if this one fails
   steps:
   - script: sudo apt-get update
@@ -23,10 +23,19 @@ jobs:
 #  - script: exit 0
 
 - job: B
-  dependsOn: A
-  condition: eq(dependencies.A.result,'SucceededWithIssues') # targets the result of the previous job 
-  displayName: Job B
+  displayName: Code copied to $(htmlpath)
+  continueOnError: false # next job don´t starts if this one fails
   steps:
-  - script: echo Job B ran
+  - script: echo "Se va a ejecutar el comando ls $(Build.SourcesDirectory)"; ls $(Build.SourcesDirectory)
+  - script: echo "cp -r $(Build.SourcesDirectory)/. $(htmlpath)/; sudo cp -r $(Build.SourcesDirectory)/. $(htmlpath)/
+
+- job: C
+  dependsOn: B
+  displayName: Checking html code running on Apache
+  steps:
+  - script: Se va a ejecutar el comando
+  - script: echo `ls $(htmlpath)/s`
+  - script: echo Curl a $(testURL)
+  - script: curl $(testURL) 
 
 
