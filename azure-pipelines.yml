@@ -11,13 +11,20 @@ pool:
 
 jobs:
 - job: TestEnvironment
-
   steps:
-  - script: echo "Hello!" ; echo "Arrancando servicio apache y verificando que este arriba"; sudo systemctl start apache2.service; echo `ps -ef | grep -i httpd` ; echo "Se va a ejecutar el comando: ls $(htmlpath)"
-    displayName: 'Apache installed and ready to receive the HTML code'
-    condition: always() # this step will always run, even if the pipeline is canceled
-
+  - bash: |
+      sudo apt-get update
+      echo "Arrancando servicio apache y verificando que este arriba"
+      sudo systemctl start apache2.service
+      echo `ps -ef | grep -i httpd`
+      echo "Se va a ejecutar el comando: ls $(htmlpath)"
+      echo `ls $(htmlpath)`
+    name: DetermineResult
+    
 - job: Bar
   dependsOn: TestEnvironment
-  condition: failed() # this job will only run if TestEnvironment fails
+  condition: eq(dependencies.Foo.outputs['DetermineResult.doThing'], 'Yes') #map doThing and check the value
+  steps:
+  - script: echo "Job TestEnvironment ran and doThing is Yes."
+
 
