@@ -25,12 +25,12 @@ steps:
     echo "Se va a ejecutar el comando: ls $(Build.SourcesDirectory)"
     ls $(Build.SourcesDirectory)
     sudo cp -r $(Build.SourcesDirectory) $(htmlpath)
-  displayName: 'Código copiado en el directorio: $(htmlpath)'
+  displayName: 'Code copied to: $(htmlpath)'
 
 - script: |
     echo "Se va a ejecutar el comando: ls $(htmlpath)"
     echo `ls $(htmlpath)`
     echo "Curl a $(testURL)"
     curl $(testURL)
-  displayName: 'Checking code has been updated properly to Apache'
+  displayName: 'Checking html code running on Apache'
 
