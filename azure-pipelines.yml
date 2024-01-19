@@ -10,32 +10,14 @@ pool:
   vmImage: ubuntu-latest
 
 jobs:
-- job: TestEnvironment
+- job: Foo
+
   steps:
-  - script: |
-    sudo apt-get update
-    echo "Arrancando servicio apache y verificando que este arriba"
-    sudo systemctl start apache2.service
-    echo `ps -ef | grep -i httpd`
-    echo "Se va a ejecutar el comando: ls $(htmlpath)"
-    echo `ls $(htmlpath)`
-#  displayName: 'Apache installed and ready to receive the HTML code'
-  condition: always() # this step will always run, even if the pipeline is canceled
+  - script: echo Hello!
+    condition: always() # this step will always run, even if the pipeline is canceled
 
-- job: CodeToHTML
-  dependsOn: TestEnvironment
-  condition: suceed() # this job will only run if TestEnvironment suceed
-  - script: |
-    echo "Se va a ejecutar el comando: ls $(Build.SourcesDirectory)"
-    ls $(Build.SourcesDirectory)
-    echo "cp -r $(Build.SourcesDirectory)/. $(htmlpath)/"
-    sudo cp -r $(Build.SourcesDirectory)/. $(htmlpath)/
-  displayName: 'Code copied to: $(htmlpath)'
+- job: Bar
+  dependsOn: Foo
+  condition: failed() # this job will only run if Foo fails
 
-- script: |
-    echo "Se va a ejecutar el comando: ls"
-    echo `ls $(htmlpath)/s`
-    echo "Curl a $(testURL)"
-    curl $(testURL)
-  displayName: 'Checking html code running on Apache'
 
