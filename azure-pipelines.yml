@@ -29,7 +29,7 @@ steps:
 - script: |
     echo "Se va a ejecutar el comando: ls -lart $(htmlpath)"
     echo `ls $(htmlpath)`
-    echo "Curl a http://localhost:80"
-    curl http://localhost:80
+    echo "Curl a $(testURL)"
+    curl $(testURL)
   displayName: 'Checking code has been updated properly to Apache'
 
