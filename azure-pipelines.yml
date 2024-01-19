@@ -23,6 +23,7 @@ jobs:
 #  - script: exit 0
 
 - job: B
+  dependsOn: A
   displayName: Code copied to $(htmlpath)
   continueOnError: false # next job don´t starts if this one fails
   steps:
