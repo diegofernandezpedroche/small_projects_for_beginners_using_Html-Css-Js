@@ -17,7 +17,7 @@ steps:
     echo `ls -lart /var/www`
   displayName: 'Apache installed and ready to receive the HTML code'
 - script: |
-    sudo cp '$(Build.SourcesDirectory)' '$(htmlpath)'
+    sudo cp -R '$(Build.SourcesDirectory)' '$(htmlpath)'
 #- task: CopyFiles@2
 #  inputs:
 #    sourceFolder: '$(Build.SourcesDirectory)'
