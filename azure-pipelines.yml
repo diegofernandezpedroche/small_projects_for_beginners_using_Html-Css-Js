@@ -12,7 +12,10 @@ pool:
 steps:
 - script: |
     sudo apt-get update
+    echo "Lanzando: apt install curl"
     sudo apt install curl
+    echo "Arrancando servicio apache:"
+    sudo systemctl start apache2.service
     echo "Se va a ejecutar el comando: ls -lart /var/www"
     echo `ls -lart /var/www`
   displayName: 'Apache installed and ready to receive the HTML code'
