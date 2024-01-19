@@ -16,13 +16,15 @@ steps:
     echo "Se va a ejecutar el comando: ls -lart /var/www"
     echo `ls -lart /var/www`
   displayName: 'Apache installed and ready to receive the HTML code'
-- task: CopyFiles@2
-  inputs:
-    sourceFolder: '$(Build.SourcesDirectory)'
-    contents: |
-       *
-    targetFolder: '$(htmlpath)'
-  displayName: 'Copy project files'
+- script: |
+    sudo cp '$(Build.SourcesDirectory)' '$(htmlpath)'
+#- task: CopyFiles@2
+#  inputs:
+#    sourceFolder: '$(Build.SourcesDirectory)'
+#    contents: |
+#       *
+#    targetFolder: '$(htmlpath)'
+#  displayName: 'Copy project files'
 
 - script: |
     echo "Se va a ejecutar el comando: ls -lart /var/www"
