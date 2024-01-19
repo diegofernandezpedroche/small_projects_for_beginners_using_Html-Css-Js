@@ -20,7 +20,7 @@ jobs:
   - script: echo `ps -ef | grep -i httpd`
   - script: echo "Se va a ejecutar el comando ls $(htmlpath)"
   - script: echo `ls $(htmlpath)`
-  - script: exit 1
+#  - script: exit 0
 
 - job: B
   dependsOn: A
