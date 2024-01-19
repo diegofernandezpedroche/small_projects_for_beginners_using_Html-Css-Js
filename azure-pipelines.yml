@@ -41,7 +41,7 @@ steps:
 #    ls $(Build.SourcesDirectory)
 #    echo "cp -r $(Build.SourcesDirectory)/ $(htmlpath)/"
 #    sudo cp -r $(Build.SourcesDirectory) $(htmlpath)/
-  displayName: 'Code copied to: $(htmlpath)'
+#  displayName: 'Code copied to: $(htmlpath)'
 
 - script: |
     echo "Se va a ejecutar el comando: ls"
